@@ -1,0 +1,2 @@
+alter table ZXC_EMPLOYEE add constraint FK_ZXC_EMPLOYEE_ON_CUBA_USER_ID foreign key (CUBA_USER_ID_ID) references SEC_USER(ID);
+create index IDX_ZXC_EMPLOYEE_ON_CUBA_USER_ID on ZXC_EMPLOYEE (CUBA_USER_ID_ID);

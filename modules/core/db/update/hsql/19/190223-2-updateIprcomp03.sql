@@ -1,0 +1,2 @@
+alter table ZXC_IPRCOMP add constraint FK_ZXC_IPRCOMP_ON_IPR_LIST foreign key (IPR_LIST_ID) references ZXC_INDIVIDUAL_CAREER_PLAN(ID);
+create index IDX_ZXC_IPRCOMP_ON_IPR_LIST on ZXC_IPRCOMP (IPR_LIST_ID);

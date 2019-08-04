@@ -1,0 +1,1 @@
+create unique index IDX_ZXC_WORK_PLAN_UNQ on ZXC_WORK_PLAN (EMPLOYEE_ID, PLAN_QUARTER) ;

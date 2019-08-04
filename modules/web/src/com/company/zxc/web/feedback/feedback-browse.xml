@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.zxc.web.feedback.FeedbackBrowse"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.company.zxc.web.feedback">
+    <dsContext>
+        <datasource id="feedbackDs"
+                    class="com.company.zxc.entity.Feedback"
+                    view="feedback-view"/>
+        <groupDatasource id="feedbacksDs"
+                         class="com.company.zxc.entity.Feedback"
+                         view="feedback-view">
+            <query>
+                <![CDATA[select e from zxc$Feedback e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="table"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="table"
+                        datasource="feedbacksDs">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="message"
+                                caption="Сообщение"/>
+                        <column id="signature"
+                                caption="ID сообщения"
+                                visible="false"/>
+                        <column id="employee"
+                                caption="Сотрудник"/>
+                        <column id="chief_comment"
+                                caption="Ответ руководителя"/>
+                    </columns>
+                    <rows datasource="feedbacksDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="table.create"/>
+                        <button id="editBtn"
+                                action="table.edit"/>
+                        <button id="removeBtn"
+                                action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <vbox margin="true,true,true,false"
+                          spacing="true">
+                        <textArea caption="msg://Сообщение"
+                                  datasource="feedbackDs"
+                                  description="Заполняет сотрудник"
+                                  property="message"
+                                  rows="10"
+                                  width="100%"/>
+                        <textField id="msgId"
+                                   caption="msg://ID сообщения"
+                                   datasource="feedbackDs"
+                                   datatype="string"
+                                   editable="false"
+                                   property="signature"
+                                   visible="false"
+                                   width="100%"/>
+                        <pickerField id="employeeField"
+                                     caption="msg://Сотрудник"
+                                     datasource="feedbackDs"
+                                     property="employee"
+                                     width="350px"/>
+                        <textArea caption="msg://Ответ руководителя"
+                                  datasource="feedbackDs"
+                                  description="Заполняет руководитель в ответ на сообщение"
+                                  property="chief_comment"
+                                  rows="10"
+                                  width="100%"/>
+                        <fieldGroup id="fieldGroup"
+                                    datasource="feedbackDs"/>
+                    </vbox>
+                </scrollBox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

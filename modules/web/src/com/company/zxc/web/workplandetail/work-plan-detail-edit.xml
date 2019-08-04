@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.workplandetail.WorkPlanDetailEdit"
+        datasource="workPlanDetailDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.workplandetail">
+    <dsContext>
+        <datasource id="workPlanDetailDs"
+                    class="com.company.zxc.entity.WorkPlanDetail"
+                    view="workPlanDetail-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="750"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="workPlanDetailDs">
+            <column width="450px">
+                <field caption="msg://project"
+                       property="project"
+                       width="250px"/>
+                <field caption="msg://plannedWorks"
+                       property="plannedWorks"
+                       rows="5"/>
+                <field caption="msg://projectsTasks"
+                       property="projectsTasks"
+                       rows="5"/>
+                <field caption="msg://Критерий оценки"
+                       property="evaluation_criterion"
+                       rows="5"/>
+                <field caption="msg://Комментарий о выполнении"
+                       property="resultEmpl"
+                       rows="5"/>
+                <field caption="msg://Оценка"
+                       property="grade"
+                       width="250px"/>
+                <field caption="msg://Комментарий руководителя"
+                       property="resultChief"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"
+               stylename="primary"/>
+    </layout>
+</window>

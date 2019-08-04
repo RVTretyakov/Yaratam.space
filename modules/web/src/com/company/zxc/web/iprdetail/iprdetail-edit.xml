@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.iprdetail.IprdetailEdit"
+        datasource="iprdetailDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.iprdetail">
+    <dsContext>
+        <datasource id="iprdetailDs"
+                    class="com.company.zxc.entity.Iprdetail"
+                    view="iprdetail-view_2"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="900"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="iprdetailDs">
+            <column width="450px">
+                <field caption="msg://competency"
+                       description="Рекомендуется выбирать не более 2-3 компетенций, которые вы хотите развивать в течение срока выполнения ИПР"
+                       property="competency"
+                       width="250px"/>
+                <field caption="msg://goal"
+                       description="Укажите, что конкретно вы хотите изменить/развить. Для правильного формирования целей рекомендуется использовать методику SMART"
+                       property="goal"
+                       rows="5"/>
+                <field caption="msg://goal_comment_mentor"
+                       description="Поле заполняет руководитель при согласовании ИПР"
+                       property="goal_comment_mentor"
+                       rows="5"/>
+                <field caption="msg://activity"
+                       description="Опишите конкретные действия по развитию компетенции и сроки их выполнения. Для правильного формирования перечня мероприятий используйте методику «70-20-10»"
+                       property="activity"
+                       rows="5"/>
+                <field caption="msg://evaluation_criterion"
+                       description="Сформулируйте результат развития. Укажите, кто, когда и по каким критериям сможет понять, что результат развития достигнут"
+                       property="evaluation_criterion"
+                       rows="5"/>
+                <field caption="msg://result_empl"
+                       description="Заполните поле перед квартальной встречей с руководителем"
+                       property="result_empl"
+                       rows="5"/>
+                <field caption="msg://grade"
+                       property="grade"
+                       visible="false"
+                       width="250px"/>
+                <field caption="msg://result_mentor"
+                       property="result_mentor"
+                       rows="5"
+                       visible="false"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"
+               stylename="primary"/>
+    </layout>
+</window>

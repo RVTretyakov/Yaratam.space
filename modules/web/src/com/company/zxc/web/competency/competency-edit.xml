@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.competency.CompetencyEdit"
+        datasource="competencyDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.competency">
+    <dsContext>
+        <datasource id="competencyDs"
+                    class="com.company.zxc.entity.Competency"
+                    view="competency-view"/>
+    </dsContext>
+    <dialogMode height="auto"
+                width="1200"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="competencyDs"
+                    width="668px">
+            <column width="100%">
+                <field caption="msg://name"
+                       property="name"/>
+                <field caption="msg://descr"
+                       property="description"
+                       rows="10"/>
+                <field caption="msg://guru"
+                       description="Наиболее опытный специалист, на которого можно ориентироваться"
+                       property="employee_master"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

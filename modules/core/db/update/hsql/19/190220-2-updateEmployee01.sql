@@ -1,0 +1,1 @@
+create index IDX_ZXC_EMPLOYEE on ZXC_EMPLOYEE (FIO) ;

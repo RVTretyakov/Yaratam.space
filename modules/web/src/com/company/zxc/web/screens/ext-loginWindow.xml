@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.zxc.web.screens.ExtAppLoginWindow"
+        extends="/com/haulmont/cuba/web/app/loginwindow/loginwindow.xml"
+        messagesPack="com.company.zxc.web.screens"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
+    <dsContext>
+        <datasource id="projectDs"
+                    class="com.company.zxc.entity.Project"
+                    view="project-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox id="loginWrapper"
+              height="794px">
+            <vbox id="loginMainBox">
+                <capsLockIndicator id="capsLockIndicator"
+                                   align="MIDDLE_CENTER"
+                                   height="41px"
+                                   stylename="c-login-capslockindicator"/>
+                <vbox height="50px"
+                      margin="true"
+                      spacing="true">
+                    <label align="TOP_CENTER"
+                           stylename="tiny"
+                           value="Анонимный вход:"/>
+                    <label stylename="tiny"
+                           value="логин: anonymous пароль: anonymous"/>
+                </vbox>
+            </vbox>
+        </vbox>
+        <main:workArea ext:index="1">
+            <main:initialLayout id="initialLayout"/>
+        </main:workArea>
+        <label id="poweredByLink"
+               align="TOP_CENTER"
+               height="33px"
+               stylename="login-form-label"/>
+    </layout>
+</window>

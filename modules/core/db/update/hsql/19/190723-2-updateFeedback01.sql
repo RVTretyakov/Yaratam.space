@@ -1,0 +1,2 @@
+alter table ZXC_FEEDBACK add constraint FK_ZXC_FEEDBACK_ON_EMPLOYEE foreign key (EMPLOYEE_ID) references ZXC_EMPLOYEE(ID);
+create index IDX_ZXC_FEEDBACK_ON_EMPLOYEE on ZXC_FEEDBACK (EMPLOYEE_ID);

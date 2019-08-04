@@ -1,0 +1,1 @@
+alter table ZXC_INDIVIDUAL_CAREER_PLAN_COMPETENCY drop column COMPETENCY_ID__U72829 cascade ;

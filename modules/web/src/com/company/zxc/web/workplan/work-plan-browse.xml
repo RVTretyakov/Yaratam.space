@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.zxc.web.workplan.WorkPlanBrowse"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.company.zxc.web.workplan">
+    <dsContext>
+        <datasource id="workPlanDs"
+                    class="com.company.zxc.entity.WorkPlan"
+                    view="workPlan-view">
+            <collectionDatasource id="workPlanDetailTasksDs"
+                                  property="workPlanDetailTasks"/>
+        </datasource>
+        <groupDatasource id="workPlansDs"
+                         class="com.company.zxc.entity.WorkPlan"
+                         view="workPlan-view">
+            <query>
+                <![CDATA[select e from zxc$WorkPlan e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               pos="60"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="table"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="table"
+                        datasource="workPlansDs">
+                    <properties include=".*"/>
+                </filter>
+                <table id="table"
+                       multiLineCells="true"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="employee"
+                                caption="msg://employee"/>
+                        <column id="plan_quarter"
+                                caption="msg://plan_quarter"/>
+                        <column id="tasks_aggregate"
+                                caption="msg://Перечень задач на квартал"
+                                generator="generateTasks_aggregateCell"/>
+                    </columns>
+                    <rows datasource="workPlansDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="table.create"/>
+                        <button id="editBtn"
+                                action="table.edit"/>
+                        <button id="removeBtn"
+                                action="table.remove"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+            <vbox id="editBox"
+                  expand="tabSheetBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <vbox id="tabSheetBox">
+                    <tabSheet id="tabSheet"
+                              height="100%">
+                        <tab id="mainTab"
+                             caption="msg://mainTab"
+                             margin="true">
+                            <scrollBox id="fieldGroupBox"
+                                       spacing="true">
+                                <hbox spacing="true">
+                                    <pickerField caption="msg://employee"
+                                                 datasource="workPlanDs"
+                                                 description="ФИО сотрудника, для которого создается план работ"
+                                                 property="employee"
+                                                 width="350px"/>
+                                    <pickerField caption="msg://plan_quarter"
+                                                 datasource="workPlanDs"
+                                                 description="Плановый период"
+                                                 property="plan_quarter"/>
+                                </hbox>
+                                <hbox caption="Задачи"
+                                      height="400px"
+                                      stylename="well card"
+                                      width="100%">
+                                    <table id="workPlanDetailTasksTable"
+                                           height="100%"
+                                           multiLineCells="true"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"/>
+                                            <action id="edit"/>
+                                            <action id="remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="taskName"
+                                                    caption="msg://task"
+                                                    width="450"/>
+                                            <column id="date_begin"
+                                                    caption="msg://Дата начала"
+                                                    width="100"/>
+                                            <column id="date_end"
+                                                    caption="msg://Дата окончания"
+                                                    width="100"/>
+                                            <column id="comment_mentor"
+                                                    caption="msg://Комментарий руководителя по задаче"
+                                                    width="400"/>
+                                            <column id="result_report"
+                                                    caption="msg://result_trport"
+                                                    width="400"/>
+                                        </columns>
+                                        <rows datasource="workPlanDetailTasksDs"/>
+                                        <buttonsPanel margin="true">
+                                            <button action="workPlanDetailTasksTable.create"
+                                                    caption="Добавить"/>
+                                            <button action="workPlanDetailTasksTable.edit"/>
+                                            <button action="workPlanDetailTasksTable.remove"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </hbox>
+                                <textArea caption="msg://Комментарий руководителя по задачам"
+                                          datasource="workPlanDs"
+                                          description="Заполняет руководитель перед квартальной встречей с сотрудником"
+                                          property="mentorTargetComment"
+                                          width="100%"/>
+                                <textArea caption="msg://Комментарий руководителя"
+                                          datasource="workPlanDs"
+                                          description="Заполняет руководитель по итогам квартала"
+                                          property="mentorComment"
+                                          width="100%"/>
+                                <pickerField caption="msg://Оценка выполнения задач"
+                                             datasource="workPlanDs"
+                                             description="Заполняет руководитель по итогам квартала"
+                                             property="grade"/>
+                                <fieldGroup id="fieldGroup"
+                                            datasource="workPlanDs"/>
+                            </scrollBox>
+                        </tab>
+                    </tabSheet>
+                </vbox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"
+                            stylename="primary"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

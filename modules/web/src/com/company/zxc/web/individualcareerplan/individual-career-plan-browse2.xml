@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.zxc.web.individualcareerplan.IndividualCareerPlanBrowse2"
+        focusComponent="table"
+        messagesPack="com.company.zxc.web.individualcareerplan">
+    <dsContext>
+        <datasource id="individualCareerPlanDs"
+                    class="com.company.zxc.entity.IndividualCareerPlan"
+                    view="individualCareerPlan-view_4">
+            <collectionDatasource id="iprdetailDs"
+                                  property="iprdetail"/>
+        </datasource>
+        <groupDatasource id="individualCareerPlansDs"
+                         class="com.company.zxc.entity.IndividualCareerPlan"
+                         view="individualCareerPlan-view_4">
+            <query>
+                <![CDATA[select e from zxc$IndividualCareerPlan e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="table"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="table"
+                        datasource="individualCareerPlansDs">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="employee"/>
+                        <column id="dateTo"/>
+                        <column id="goal"/>
+                        <column id="grade"/>
+                        <column id="result_employee"/>
+                        <column id="result_mentor"/>
+                    </columns>
+                    <rows datasource="individualCareerPlansDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="table.create"/>
+                        <button id="editBtn"
+                                action="table.edit"/>
+                        <button id="removeBtn"
+                                action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="tabSheetBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <vbox id="tabSheetBox">
+                    <tabSheet id="tabSheet"
+                              height="100%">
+                        <tab id="mainTab"
+                             caption="msg://mainTab"
+                             margin="true">
+                            <scrollBox id="fieldGroupBox"
+                                       height="100%">
+                                <fieldGroup id="fieldGroup"
+                                            datasource="individualCareerPlanDs">
+                                    <column width="250px">
+                                        <field property="employee"/>
+                                        <field property="dateTo"/>
+                                        <field property="goal"/>
+                                        <field property="grade"/>
+                                        <field property="result_employee"/>
+                                        <field property="result_mentor"/>
+                                    </column>
+                                </fieldGroup>
+                            </scrollBox>
+                        </tab>
+                        <tab id="iprdetailTab"
+                             caption="msg://com.company.zxc.entity/IndividualCareerPlan.iprdetail"
+                             margin="true,false,false,false">
+                            <split id="split_1"
+                                   height="100%"
+                                   orientation="horizontal"
+                                   reversePosition="true"
+                                   width="100%">
+                                <vbox id="vbox_1"
+                                      height="100%"
+                                      margin="false,true,false,false"
+                                      spacing="true">
+                                    <filter id="filter_1"
+                                            applyTo="table"
+                                            datasource="iprdetailDs">
+                                        <properties include=".*"/>
+                                    </filter>
+                                    <groupTable id="grouptable_1"
+                                                width="100%">
+                                        <actions>
+                                            <action id="create"/>
+                                            <action id="edit"/>
+                                            <action id="remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="competency"/>
+                                            <column id="goal"/>
+                                            <column id="activity"/>
+                                            <column id="evaluation_criterion"/>
+                                            <column id="grade"/>
+                                            <column id="result_empl"/>
+                                            <column id="result_mentor"/>
+                                            <column id="goal_comment_mentor"/>
+                                        </columns>
+                                        <rows datasource="iprdetailDs"/>
+                                        <rowsCount/>
+                                        <buttonsPanel id="buttonspanel_1"
+                                                      alwaysVisible="true">
+                                            <button id="button_1"
+                                                    action="table.create"/>
+                                            <button id="button_2"
+                                                    action="table.edit"/>
+                                            <button id="button_3"
+                                                    action="table.remove"/>
+                                        </buttonsPanel>
+                                    </groupTable>
+                                </vbox>
+                                <vbox id="vbox_2"
+                                      height="100%"
+                                      margin="false,false,false,true"
+                                      spacing="true">
+                                    <fieldGroup id="fieldgroup_1"
+                                                datasource="iprdetailsDs">
+                                        <column width="250px">
+                                            <field property="competency"/>
+                                            <field property="goal"/>
+                                            <field property="activity"/>
+                                            <field property="evaluation_criterion"/>
+                                            <field property="result_empl"/>
+                                            <field property="result_mentor"/>
+                                        </column>
+                                    </fieldGroup>
+                                    <hbox id="actionsPane"
+                                          spacing="true"
+                                          visible="false">
+                                        <button id="saveBtn"
+                                                action="save"/>
+                                        <button id="cancelBtn"
+                                                action="cancel"/>
+                                    </hbox>
+                                </vbox>
+                            </split>
+                        </tab>
+                    </tabSheet>
+                </vbox>
+                <hbox id="hbox_1"
+                      spacing="true"
+                      visible="false">
+                    <button id="button_4"
+                            action="save"/>
+                    <button id="button_5"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

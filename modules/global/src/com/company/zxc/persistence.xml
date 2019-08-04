@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="zxc"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.company.zxc.entity.Employee</class>
+        <class>com.company.zxc.entity.Department</class>
+        <class>com.company.zxc.entity.IndividualCareerPlan</class>
+        <class>com.company.zxc.entity.Grade</class>
+        <class>com.company.zxc.entity.WorkPlan</class>
+        <class>com.company.zxc.entity.Competency</class>
+        <class>com.company.zxc.entity.Iprdetail</class>
+        <class>com.company.zxc.entity.Position</class>
+        <class>com.company.zxc.entity.UserRole</class>
+        <class>com.company.zxc.entity.Project</class>
+        <class>com.company.zxc.entity.WorkPlanDetail</class>
+        <class>com.company.zxc.entity.WorkPlanDetailTask</class>
+        <class>com.company.zxc.entity.QuartersDict</class>
+        <class>com.company.zxc.entity.Feedback</class>
+    </persistence-unit>
+</persistence>

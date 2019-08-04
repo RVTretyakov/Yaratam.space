@@ -1,0 +1,5 @@
+create table ZXC_INDIVIDUAL_CAREER_PLAN_IPRDETAIL_LINK (
+    INDIVIDUAL_CAREER_PLAN_ID varchar(36) not null,
+    IPRDETAIL_ID varchar(36) not null,
+    primary key (INDIVIDUAL_CAREER_PLAN_ID, IPRDETAIL_ID)
+);

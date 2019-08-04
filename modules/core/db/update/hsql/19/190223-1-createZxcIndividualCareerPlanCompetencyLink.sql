@@ -1,0 +1,5 @@
+create table ZXC_INDIVIDUAL_CAREER_PLAN_COMPETENCY_LINK (
+    INDIVIDUAL_CAREER_PLAN_ID varchar(36) not null,
+    COMPETENCY_ID varchar(36) not null,
+    primary key (INDIVIDUAL_CAREER_PLAN_ID, COMPETENCY_ID)
+);

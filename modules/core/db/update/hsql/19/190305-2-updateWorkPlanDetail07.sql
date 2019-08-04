@@ -1,0 +1,2 @@
+alter table ZXC_WORK_PLAN_DETAIL add constraint FK_ZXC_WORK_PLAN_DETAIL_ON_GRADE foreign key (GRADE_ID) references ZXC_GRADE(ID);
+create index IDX_ZXC_WORK_PLAN_DETAIL_ON_GRADE on ZXC_WORK_PLAN_DETAIL (GRADE_ID);

@@ -1,0 +1,1 @@
+alter table ZXC_INDIVIDUAL_CAREER_PLAN drop column GOAL_COMMENT_MENTOR__U80006 cascade ;

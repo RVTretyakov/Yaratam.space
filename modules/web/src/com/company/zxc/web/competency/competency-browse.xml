@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.zxc.web.competency.CompetencyBrowse"
+        focusComponent="competenciesTable"
+        lookupComponent="competenciesTable"
+        messagesPack="com.company.zxc.web.competency">
+    <dsContext>
+        <groupDatasource id="competenciesDs"
+                         class="com.company.zxc.entity.Competency"
+                         view="competency-view">
+            <query>
+                <![CDATA[select e from zxc$Competency e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="800"
+                width="1200"/>
+    <layout expand="competenciesTable"
+            spacing="true"
+            width="100%">
+        <filter id="filter"
+                applyTo="competenciesTable"
+                datasource="competenciesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="competenciesTable"
+                    multiLineCells="true"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"
+                        caption="msg://name"
+                        width="250"/>
+                <column id="description"
+                        caption="msg://descr"
+                        width="400"/>
+                <column id="employee_master"
+                        caption="msg://guru"
+                        description="Наиболее опытный специалист, на которого можно ориентироваться"
+                        width="150"/>
+            </columns>
+            <rows datasource="competenciesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="competenciesTable.create"/>
+                <button id="editBtn"
+                        action="competenciesTable.edit"/>
+                <button id="removeBtn"
+                        action="competenciesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.employee.EmployeeEdit"
+        datasource="employeeDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.employee">
+    <dsContext>
+        <datasource id="employeeDs"
+                    class="com.company.zxc.entity.Employee"
+                    view="employee-view_1"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="employeeDs">
+            <column width="250px">
+                <field caption="msg://fio"
+                       property="fio"/>
+                <field caption="msg://position"
+                       property="position"/>
+                <field caption="msg://otdel"
+                       property="department"/>
+                <field caption="msg://teamLead"
+                       property="teamLead"/>
+                <field caption="msg://role"
+                       property="userRole"/>
+                <field caption="msg://chief"
+                       property="chief"/>
+                <field caption="msg://cubaUserId"
+                       property="cubaUserId"
+                       visible="false"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"
+               stylename="primary"/>
+    </layout>
+</window>

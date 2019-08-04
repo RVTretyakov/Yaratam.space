@@ -1,0 +1,8 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_company_zxc-havana-ext {
+
+    .abbreviation .v-table-caption-container {
+        text-overflow: ellipsis;
+    }
+
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.project.ProjectEdit"
+        datasource="projectDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.project">
+    <dsContext>
+        <datasource id="projectDs"
+                    class="com.company.zxc.entity.Project"
+                    view="_minimal"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    caption="msg://caption"
+                    datasource="projectDs">
+            <column width="250px">
+                <field caption="msg://наименование"
+                       property="name"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"
+               stylename="primary"/>
+    </layout>
+</window>

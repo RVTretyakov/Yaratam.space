@@ -1,0 +1,13 @@
+.idea
+target
+.settings
+.gradle
+.studio
+*.ipr
+*.iml
+*.iws
+build/*
+deploy/*
+modules/*/build/*
+out
+test-run

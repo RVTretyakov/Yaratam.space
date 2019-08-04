@@ -1,0 +1,11 @@
+@import "../halo/halo";
+
+@mixin cbrTalents {
+  @include halo;
+
+    .qwerty {
+            overflow: auto;
+    }
+
+
+  }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-zxc"
+          insertBefore="administration">
+        <menu id="dictMenu">
+            <item screen="zxc$Employee.browse"/>
+            <item screen="zxc$Position.browse"/>
+            <item screen="zxc$UserRole.browse"/>
+            <item screen="zxc$Department.browse"/>
+            <item screen="zxc$Grade.browse"/>
+            <item screen="zxc$Competency.browse"/>
+            <item screen="zxc$Project.browse"/>
+            <item screen="zxc$QuartersDict.browse"/>
+        </menu>
+        <item screen="zxc$IndividualCareerPlan.browse4"/>
+        <item screen="zxc$WorkPlan.browse"/>
+        <item screen="zxc$Feedback.browse"/>
+        <item openType="DIALOG"
+              screen="messageIdScreen"/>
+    </menu>
+    <item screen="helpScreen"/>
+</menu-config>

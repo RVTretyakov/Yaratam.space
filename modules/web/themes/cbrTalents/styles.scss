@@ -1,0 +1,6 @@
+@import "cbrTalents-defaults";
+@import "cbrTalents";
+
+.cbrTalents {
+  @include cbrTalents;
+}

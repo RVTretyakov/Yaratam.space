@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<template icon="resource://template/template_side_menu.svg"
+          name="Main window with side menu_copy"
+          platformVersionRange="6.4.0-unbounded">
+    <description>
+        <![CDATA[A main window with a side menu on the left side.]]>
+    </description>
+    <source fileExt="xml"
+            name="descriptor"
+            templateFileName="ext-mainwindow"/>
+    <source fileExt="java"
+            name="controller"
+            templateFileName="ExtAppMainWindow"/>
+</template>

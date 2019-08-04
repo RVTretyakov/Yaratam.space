@@ -1,0 +1,1 @@
+drop table ZXC_INDIVIDUAL_CAREER_PLAN_IPRDETAIL_LINK__U06841 if exists cascade ;

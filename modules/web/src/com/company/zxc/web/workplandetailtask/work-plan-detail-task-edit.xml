@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.workplandetailtask.WorkPlanDetailTaskEdit"
+        datasource="workPlanDetailTaskDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.workplandetailtask">
+    <dsContext>
+        <datasource id="workPlanDetailTaskDs"
+                    class="com.company.zxc.entity.WorkPlanDetailTask"
+                    view="workPlanDetailTask-view2"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="workPlanDetailTaskDs"
+                    width="100%">
+            <column width="100%">
+                <field caption="msg://taskName"
+                       property="taskName"
+                       rows="5"
+                       description="Задача"
+                       width="100%"/>
+                <field caption="msg://date_begin"
+                       description="Дата начала планового периода"
+                       property="date_begin"
+                       width="250px"/>
+                <field caption="msg://date_end"
+                       description="Дата завершения планового периода"
+                       property="date_end"
+                       width="250px"/>
+                <field caption="msg://comment_mentor"
+                       description="Заполняет руководитель перед квартальной встречей с сотрудником"
+                       property="comment_mentor"
+                       rows="5"/>
+                <field caption="msg://result_report"
+                       description="Рекомендуется вносить информацию в поле по мере выполнения задач. Перед квартальной встречей с руководителем отчет должен быть заполнен по всем задачам"
+                       property="result_report"
+                       rows="5"/>
+                <field caption="msg://result_grade"
+                       description="После выполнения всех задач выставите сами себе оценку по шкале от А до Е"
+                       property="result_grade"
+                       width="250px"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

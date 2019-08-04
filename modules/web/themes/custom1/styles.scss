@@ -1,0 +1,6 @@
+@import "custom1-defaults";
+@import "custom1";
+
+.custom1 {
+  @include custom1;
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.zxc.web.workplandetail.WorkPlanDetailBrowse"
+        focusComponent="workPlanDetailsTable"
+        lookupComponent="workPlanDetailsTable"
+        messagesPack="com.company.zxc.web.workplandetail">
+    <dsContext>
+        <groupDatasource id="workPlanDetailsDs"
+                         class="com.company.zxc.entity.WorkPlanDetail"
+                         view="workPlanDetail-view">
+            <query>
+                <![CDATA[select e from zxc$WorkPlanDetail e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="workPlanDetailsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="workPlanDetailsTable"
+                datasource="workPlanDetailsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="workPlanDetailsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="project"
+                        caption="msg://project"/>
+                <column id="plannedWorks"
+                        caption="msg://plannedWorks"/>
+                <column id="projectsTasks"
+                        caption="msg://projectsTasks"/>
+                <column id="evaluation_criterion"
+                        caption="msg://Критерий оценки"/>
+                <column id="grade"
+                        caption="msg://Оценка"/>
+                <column id="resultEmpl"
+                        caption="msg://Комментарий о выполнении"/>
+                <column id="resultChief"
+                        caption="msg://Комментарий руководителя"/>
+            </columns>
+            <rows datasource="workPlanDetailsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="workPlanDetailsTable.create"/>
+                <button id="editBtn"
+                        action="workPlanDetailsTable.edit"/>
+                <button id="removeBtn"
+                        action="workPlanDetailsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

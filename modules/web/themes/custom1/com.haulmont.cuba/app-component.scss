@@ -1,0 +1,5 @@
+@import "../custom1";
+
+@mixin com_haulmont_cuba {
+  @include custom1;
+}

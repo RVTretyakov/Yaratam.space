@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.zxc.web.competency.CompetencyBrowse2"
+        focusComponent="competenciesTable"
+        lookupComponent="competenciesTable"
+        messagesPack="com.company.zxc.web.competency">
+    <dsContext>
+        <groupDatasource id="competenciesDs"
+                         class="com.company.zxc.entity.Competency"
+                         view="competency-view">
+            <query>
+                <![CDATA[select e from zxc$Competency e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="competenciesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="competenciesTable"
+                datasource="competenciesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="competenciesTable"
+                    multiLineCells="true"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"
+                        width="250"/>
+                <column id="description"
+                        width="400"/>
+                <column id="employee_master"
+                        width="200"/>
+            </columns>
+            <rows datasource="competenciesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="competenciesTable.create"/>
+                <button id="editBtn"
+                        action="competenciesTable.edit"/>
+                <button id="removeBtn"
+                        action="competenciesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

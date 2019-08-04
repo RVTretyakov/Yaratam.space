@@ -1,0 +1,5 @@
+@import "../cbrTalents";
+
+@mixin com_haulmont_cuba {
+  @include cbrTalents;
+}

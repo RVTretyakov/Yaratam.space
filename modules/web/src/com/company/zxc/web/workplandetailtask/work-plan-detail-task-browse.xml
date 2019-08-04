@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.zxc.web.workplandetailtask.WorkPlanDetailTaskBrowse"
+        focusComponent="workPlanDetailTasksTable"
+        lookupComponent="workPlanDetailTasksTable"
+        messagesPack="com.company.zxc.web.workplandetailtask">
+    <dsContext>
+        <groupDatasource id="workPlanDetailTasksDs"
+                         class="com.company.zxc.entity.WorkPlanDetailTask"
+                         view="workPlanDetailTask-view2">
+            <query>
+                <![CDATA[select e from zxc$WorkPlanDetailTask e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="800"
+                width="1200"/>
+    <layout expand="workPlanDetailTasksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="workPlanDetailTasksTable"
+                datasource="workPlanDetailTasksDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="workPlanDetailTasksTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="taskName"
+                        caption="msg://taskName"/>
+                <column id="date_begin"
+                        caption="msg://date_begin"/>
+                <column id="date_end"
+                        caption="msg://date_end"/>
+                <column id="comment_mentor"
+                        caption="msg://comment_mentor"/>
+                <column id="result_report"
+                        caption="msg://result_report"/>
+                <column id="result_grade"
+                        caption="msg://result_grade"/>
+            </columns>
+            <rows datasource="workPlanDetailTasksDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="workPlanDetailTasksTable.create"/>
+                <button id="editBtn"
+                        action="workPlanDetailTasksTable.edit"/>
+                <button id="removeBtn"
+                        action="workPlanDetailTasksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

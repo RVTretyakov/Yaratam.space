@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.zxc.web.individualcareerplan.IndividualCareerPlanBrowse4"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.company.zxc.web.individualcareerplan">
+    <dsContext>
+        <datasource id="individualCareerPlanDs"
+                    class="com.company.zxc.entity.IndividualCareerPlan"
+                    view="individualCareerPlan-view_4">
+            <collectionDatasource id="iprdetailDs"
+                                  property="iprdetail"/>
+        </datasource>
+        <groupDatasource id="individualCareerPlansDs"
+                         class="com.company.zxc.entity.IndividualCareerPlan"
+                         view="individualCareerPlan-view_4">
+            <query>
+                <![CDATA[select e from zxc$IndividualCareerPlan e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               pos="60"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="table"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="table"
+                        datasource="individualCareerPlansDs">
+                    <properties exclude="(Employee)"
+                                include=".*"/>
+                    <property caption="Сотрудник"
+                              name="employee"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="employee"
+                                caption="msg://employee"
+                                editable="true"/>
+                        <column id="dateTo"
+                                caption="msg://dateTo"/>
+                        <column id="goal"
+                                caption="msg://goals"
+                                visible="false"/>
+                        <column id="goals"
+                                caption="msg://goals"
+                                generator="generateGoalsCell"/>
+                        <column id="grade"
+                                caption="msg://grade"
+                                visible="false"/>
+                        <column id="result_employee"
+                                caption="msg://result_employee"
+                                visible="false"/>
+                        <column id="result_mentor"
+                                caption="msg://result_mentor"
+                                visible="false"/>
+                    </columns>
+                    <rows datasource="individualCareerPlansDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="table.create"/>
+                        <button id="editBtn"
+                                action="table.edit"/>
+                        <button id="removeBtn"
+                                action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="tabSheetBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <vbox id="tabSheetBox">
+                    <tabSheet id="tabSheet"
+                              height="100%">
+                        <tab id="mainTab"
+                             caption="msg://mainTab"
+                             margin="true">
+                            <scrollBox id="fieldGroupBox"
+                                       height="100%"
+                                       spacing="true">
+                                <hbox margin="true,true,true,false"
+                                      spacing="true">
+                                    <pickerField caption="msg://employee"
+                                                 datasource="individualCareerPlanDs"
+                                                 description="ФИО сотрудника, для которого создается ИПР"
+                                                 property="employee"
+                                                 width="350px"/>
+                                    <dateField caption="msg://dateTo"
+                                               datasource="individualCareerPlanDs"
+                                               description="Дата выполнения ИПР. Рекомендуется создавать ИПР сроком на один год"
+                                               property="dateTo"
+                                               width="200px"/>
+                                </hbox>
+                                <hbox height="400px"
+                                      spacing="true"
+                                      width="100%">
+                                    <table id="table_1"
+                                           height="100%"
+                                           multiLineCells="true"
+                                           settingsEnabled="false"
+                                           stylename="qwerty"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"/>
+                                            <action id="edit"/>
+                                            <action id="remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="competency"
+                                                    caption="msg://competency"
+                                                    width="200"/>
+                                            <column id="goal"
+                                                    caption="msg://goal"
+                                                    width="400"/>
+                                            <column id="activity"
+                                                    caption="msg://activity"
+                                                    width="200"/>
+                                            <column id="evaluation_criterion"
+                                                    caption="msg://eval_criterion"
+                                                    width="150"/>
+                                            <column id="result_empl"
+                                                    caption="msg://my_result"
+                                                    width="250"/>
+                                            <column id="goal_comment_mentor"
+                                                    caption="msg://goal_comment_mentor"
+                                                    width="250"/>
+                                        </columns>
+                                        <rows datasource="iprdetailDs"/>
+                                        <buttonsPanel margin="true">
+                                            <button action="iprdetailTable.create"
+                                                    caption="msg://addButton"/>
+                                            <button action="iprdetailTable.edit"/>
+                                            <button action="iprdetailTable.remove"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </hbox>
+                                <textArea caption="msg://result_employee"
+                                          datasource="individualCareerPlanDs"
+                                          description="Поле заполняет руководитель по результатам каждой квартальной встречи с сотрудником"
+                                          property="result_employee"
+                                          width="100%"/>
+                                <pickerField caption="msg://grade"
+                                             datasource="individualCareerPlanDs"
+                                             description="Поле заполняет руководитель по окончанию срока выполнения ИПР"
+                                             property="grade"/>
+                                <textArea caption="msg://result_mentor"
+                                          datasource="individualCareerPlanDs"
+                                          property="result_mentor"
+                                          visible="false"
+                                          width="100%"/>
+                                <fieldGroup id="fieldGroup"
+                                            datasource="individualCareerPlanDs"/>
+                            </scrollBox>
+                        </tab>
+                        <tab id="iprdetailTab"
+                             margin="true,false,false,false">
+                            <table id="iprdetailTable"
+                                   height="100%"
+                                   multiLineCells="true"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="edit"/>
+                                    <action id="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="competency"
+                                            caption="msg://competency"/>
+                                    <column id="goal"
+                                            caption="msg://goal"/>
+                                    <column id="activity"
+                                            caption="msg://activity"/>
+                                    <column id="evaluation_criterion"
+                                            caption="msg://eval_criterion"/>
+                                    <column id="grade"
+                                            caption="msg://grade"
+                                            visible="false"/>
+                                    <column id="result_empl"
+                                            caption="msg://result_employee"/>
+                                    <column id="result_mentor"
+                                            caption="msg://result_mentor"
+                                            visible="false"/>
+                                </columns>
+                                <rows datasource="iprdetailDs"/>
+                                <buttonsPanel>
+                                    <button action="iprdetailTable.create"/>
+                                    <button action="iprdetailTable.edit"/>
+                                    <button action="iprdetailTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </tab>
+                    </tabSheet>
+                </vbox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"
+                            stylename="primary"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

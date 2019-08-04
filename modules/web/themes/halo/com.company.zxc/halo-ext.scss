@@ -1,0 +1,12 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_company_zxc-halo-ext {
+
+    .abbreviation .v-table-caption-container {
+        text-overflow: ellipsis;
+    }
+    .qwerty {
+            overflow: auto;
+        }
+
+
+}

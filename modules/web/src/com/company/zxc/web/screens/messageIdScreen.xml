@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://messageIdScreen"
+        class="com.company.zxc.web.screens.Messageidscreen"
+        messagesPack="com.company.zxc.web.screens">
+    <layout expand="buttonsBox"
+            spacing="true">
+        <textField id="messageId"
+                   caption="msg://caption_"
+                   required="true"
+                   width="500px"/>
+        <hbox id="buttonsBox"
+              align="MIDDLE_RIGHT"
+              spacing="true">
+            <button id="okBtn"
+                    caption="OK"
+                    invoke="select"/>
+            <button id="cancelBtn"
+                    caption="Отмена"
+                    invoke="cancel"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,2 @@
+alter table ZXC_EMPLOYEE add constraint FK_ZXC_EMPLOYEE_ON_USER_ROLE foreign key (USER_ROLE_ID) references ZXC_USER_ROLE(ID);
+create index IDX_ZXC_EMPLOYEE_ON_USER_ROLE on ZXC_EMPLOYEE (USER_ROLE_ID);

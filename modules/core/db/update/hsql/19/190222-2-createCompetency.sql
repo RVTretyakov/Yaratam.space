@@ -1,0 +1,1 @@
+create unique index IDX_ZXC_COMPETENCY_UNIQ_NAME on ZXC_COMPETENCY (NAME) ;

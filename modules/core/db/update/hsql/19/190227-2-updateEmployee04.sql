@@ -1,0 +1,2 @@
+alter table ZXC_EMPLOYEE add constraint FK_ZXC_EMPLOYEE_ON_POSITION foreign key (POSITION_ID) references ZXC_POSITION(ID);
+create index IDX_ZXC_EMPLOYEE_ON_POSITION on ZXC_EMPLOYEE (POSITION_ID);

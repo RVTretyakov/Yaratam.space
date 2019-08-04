@@ -1,0 +1,1 @@
+drop table ZXC_INDIVIDUAL_CAREER_PLAN_COMPETENCY__U03773 if exists cascade ;

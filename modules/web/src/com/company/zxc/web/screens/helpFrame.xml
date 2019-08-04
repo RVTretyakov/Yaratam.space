@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.zxc.web.screens.Helpframe"
+        messagesPack="com.company.zxc.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <link caption="Руководство пользователя"/>
+    </layout>
+</window>

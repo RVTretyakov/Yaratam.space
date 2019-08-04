@@ -1,0 +1,2 @@
+alter table ZXC_EMPLOYEE add constraint FK_ZXC_EMPLOYEE_ON_TEAM_LEAD foreign key (TEAM_LEAD_ID) references ZXC_EMPLOYEE(ID);
+create index IDX_ZXC_EMPLOYEE_ON_TEAM_LEAD on ZXC_EMPLOYEE (TEAM_LEAD_ID);

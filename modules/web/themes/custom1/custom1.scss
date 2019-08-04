@@ -1,0 +1,14 @@
+@import "../halo/halo";
+
+@mixin custom1 {
+  @include halo;
+
+
+    .qwerty {
+            overflow: auto;
+    }
+    .qwerty > .v-scrollable{
+            overflow: auto !important;
+    }
+
+}

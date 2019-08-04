@@ -1,0 +1,1 @@
+alter table ZXC_IPRCOMPETENCY rename to ZXC_IPRCOMPETENCY__U19452 ;

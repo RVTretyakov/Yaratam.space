@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<studio>
+    <functionalitySettings>
+        <functionality id="joinedInheritanceDeleteCascade"
+                       state="ENABLE"/>
+        <functionality id="newFkConstraintNaming"
+                       state="ENABLE"/>
+        <functionality id="oneToOneIndex"
+                       state="ENABLE"/>
+    </functionalitySettings>
+    <dbScripts>
+        <excludes>
+            <hsql>
+                <item name="190222-2-updateIndividualCareerPlan03.sql">
+                    <![CDATA[-- alter table ZXC_INDIVIDUAL_CAREER_PLAN add column COMPETENCY_ID varchar(36) ^
+-- update ZXC_INDIVIDUAL_CAREER_PLAN set COMPETENCY_ID = <default_value> ;
+-- alter table ZXC_INDIVIDUAL_CAREER_PLAN alter column COMPETENCY_ID set not null ;
+alter table ZXC_INDIVIDUAL_CAREER_PLAN add column COMPETENCY_ID varchar(36) not null ;]]>
+                </item>
+                <item name="190222-2-updateIndividualCareerPlan04.sql">
+                    <![CDATA[create unique index IDX_ZXC_INDIVIDUAL_CAREER_PLAN_UNIQ_COMPETENCY_ID on ZXC_INDIVIDUAL_CAREER_PLAN (COMPETENCY_ID) ;]]>
+                </item>
+                <item name="190222-2-updateIndividualCareerPlan05.sql">
+                    <![CDATA[alter table ZXC_INDIVIDUAL_CAREER_PLAN add constraint FK_ZXC_INDIVIDUAL_CAREER_PLAN_ON_COMPETENCY foreign key (COMPETENCY_ID) references ZXC_COMPETENCY(ID);
+create index IDX_ZXC_INDIVIDUAL_CAREER_PLAN_ON_COMPETENCY on ZXC_INDIVIDUAL_CAREER_PLAN (COMPETENCY_ID);]]>
+                </item>
+                <item name="190222-2-updateCompetency06.sql">
+                    <![CDATA[alter table ZXC_COMPETENCY add constraint FK_ZXC_COMPETENCY_ON_IPR foreign key (IPR_ID) references ZXC_INDIVIDUAL_CAREER_PLAN(ID);
+create index IDX_ZXC_COMPETENCY_ON_IPR on ZXC_COMPETENCY (IPR_ID);]]>
+                </item>
+                <item name="190222-2-updateCompetency03.sql">
+                    <![CDATA[-- alter table ZXC_COMPETENCY add column IPR_ID varchar(36) ^
+-- update ZXC_COMPETENCY set IPR_ID = <default_value> ;
+-- alter table ZXC_COMPETENCY alter column IPR_ID set not null ;
+alter table ZXC_COMPETENCY add column IPR_ID varchar(36) not null ;]]>
+                </item>
+            </hsql>
+        </excludes>
+    </dbScripts>
+</studio>

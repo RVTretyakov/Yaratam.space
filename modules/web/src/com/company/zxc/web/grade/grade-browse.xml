@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.zxc.web.grade.GradeBrowse"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.company.zxc.web.grade">
+    <dsContext>
+        <datasource id="gradeDs"
+                    class="com.company.zxc.entity.Grade"
+                    view="_local"/>
+        <groupDatasource id="gradesDs"
+                         class="com.company.zxc.entity.Grade"
+                         view="_local">
+            <query>
+                <![CDATA[select e from zxc$Grade e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="800"
+                width="1200"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <groupTable id="table"
+                            height="100%"
+                            width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"
+                                caption="msg://grade_name"/>
+                        <column id="description"
+                                caption="msg://grade_descr"/>
+                    </columns>
+                    <rows datasource="gradesDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="table.create"/>
+                        <button id="editBtn"
+                                action="table.edit"/>
+                        <button id="removeBtn"
+                                action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <fieldGroup id="fieldGroup"
+                                datasource="gradeDs"
+                                width="100%">
+                        <column width="100%">
+                            <field caption="msg://grade_name"
+                                   property="name"
+                                   width="250px"/>
+                            <field caption="msg://grade_descr"
+                                   property="description"
+                                   rows="5"/>
+                        </column>
+                    </fieldGroup>
+                </scrollBox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"
+                            stylename="primary"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>
