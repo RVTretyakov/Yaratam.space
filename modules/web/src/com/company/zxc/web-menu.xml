@@ -17,6 +17,7 @@
         <item screen="zxc$Feedback.browse"/>
         <item openType="DIALOG"
               screen="messageIdScreen"/>
+        <item screen="zxc$EmployeeProfile.browse"/>
     </menu>
     <item screen="helpScreen"/>
 </menu-config>

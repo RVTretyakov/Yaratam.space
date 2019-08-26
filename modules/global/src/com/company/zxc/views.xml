@@ -173,4 +173,7 @@
         <property name="employee"
                   view="_minimal"/>
     </view>
+    <view entity="zxc$EmployeeProfile" name="employeeProfile-view" extends="_local">
+        <property name="avatar"/>
+    </view>
 </views>

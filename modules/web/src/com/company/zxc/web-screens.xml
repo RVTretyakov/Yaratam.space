@@ -63,4 +63,8 @@
             template="com/company/zxc/web/feedback/feedback-browse.xml"/>
     <screen id="messageIdScreen"
             template="com/company/zxc/web/screens/messageIdScreen.xml"/>
+    <screen id="zxc$EmployeeProfile.browse"
+            template="com/company/zxc/web/screens/employeeprofile/employee-profile-browse.xml"/>
+    <screen id="zxc$EmployeeProfile.edit"
+            template="com/company/zxc/web/screens/employeeprofile/employee-profile-edit.xml"/>
 </screen-config>

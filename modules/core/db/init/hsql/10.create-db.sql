@@ -266,3 +266,39 @@ create table ZXC_FEEDBACK (
     primary key (ID)
 )^
 -- end ZXC_FEEDBACK
+-- begin ZXC_EMPLOYEE_PROFILE
+create table ZXC_EMPLOYEE_PROFILE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    USERNAME varchar(255) not null,
+    NICKNAME varchar(255) not null,
+    FIRST_NAME varchar(255),
+    LAST_NAME varchar(255),
+    DISPLAY_NAME varchar(50),
+    AVATAR_ID varchar(36),
+    BIOGRAPHICAL_INFO varchar(1023),
+    WEBSITE varchar(255),
+    EMAIL varchar(255),
+    HASH_PASSWORD longvarchar not null,
+    IS_HR_MANAGER boolean,
+    IS_RECRUITER boolean,
+    IS_CRM_MANAGER boolean,
+    IS_CRM_AGENT boolean,
+    IS_ACCOUNTING_MANAGER boolean,
+    IS_CHOOSING_NOTIFICATIONS boolean,
+    IS_CHOOSING_VISUAL_EDITOR boolean,
+    IS_CHOOSING_SYNTAX_HIGHLIGHTING boolean,
+    ADMIN_COLOR_SCHEME varchar(50),
+    IS_CHOOSING_KEYBOARD_STRUCTS boolean,
+    IS_CHOOSING_TOOLBAR boolean,
+    --
+    primary key (ID)
+)^
+-- end ZXC_EMPLOYEE_PROFILE

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.zxc.web.screens.employeeprofile.EmployeeProfileBrowse"
+        focusComponent="employeeProfilesTable"
+        lookupComponent="employeeProfilesTable"
+        messagesPack="com.company.zxc.web.screens.employeeprofile">
+    <dsContext>
+        <groupDatasource id="employeeProfilesDs"
+                         class="com.company.zxc.entity.EmployeeProfile"
+                         view="_local">
+            <query>
+                <![CDATA[select e from zxc$EmployeeProfile e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="employeeProfilesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="employeeProfilesTable"
+                datasource="employeeProfilesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="employeeProfilesTable"
+                    width="100%">
+            <actions>
+                <action id="create"
+                        openType="NEW_TAB"/>
+                <action id="edit"
+                        openType="NEW_TAB"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="username"/>
+                <column id="nickname"/>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="displayName"/>
+                <column id="biographicalInfo"/>
+                <column id="website"/>
+                <column id="email"/>
+                <column id="hashPassword"/>
+                <column id="isHRManager"/>
+                <column id="isRecruiter"/>
+                <column id="isCRMManager"/>
+                <column id="isCRMAgent"/>
+                <column id="isAccountingManager"/>
+                <column id="isChoosingNotifications"/>
+                <column id="isChoosingVisualEditor"/>
+                <column id="isChoosingSyntaxHighlighting"/>
+                <column id="adminColorScheme"/>
+                <column id="isChoosingKeyboardStructs"/>
+                <column id="isChoosingToolbar"/>
+            </columns>
+            <rows datasource="employeeProfilesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="employeeProfilesTable.create"/>
+                <button id="editBtn" action="employeeProfilesTable.edit"/>
+                <button id="removeBtn" action="employeeProfilesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

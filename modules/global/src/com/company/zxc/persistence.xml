@@ -17,5 +17,6 @@
         <class>com.company.zxc.entity.WorkPlanDetailTask</class>
         <class>com.company.zxc.entity.QuartersDict</class>
         <class>com.company.zxc.entity.Feedback</class>
+        <class>com.company.zxc.entity.EmployeeProfile</class>
     </persistence-unit>
 </persistence>

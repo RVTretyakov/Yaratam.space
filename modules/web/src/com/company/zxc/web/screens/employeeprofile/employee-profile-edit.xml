@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.zxc.web.screens.employeeprofile.EmployeeProfileEdit"
+        datasource="employeeProfileDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.zxc.web.screens.employeeprofile">
+    <dsContext>
+        <datasource id="employeeProfileDs"
+                    class="com.company.zxc.entity.EmployeeProfile"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <fieldGroup id="fieldGroup" datasource="employeeProfileDs">
+                <column width="250px">
+                    <field property="username"/>
+                    <field property="nickname"/>
+                    <field property="firstName"/>
+                    <field property="lastName"/>
+                    <field property="displayName"/>
+                    <field property="biographicalInfo"/>
+                    <field property="website"/>
+                    <field property="email"/>
+                    <field property="hashPassword" rows="5"/>
+                    <field property="isHRManager"/>
+                    <field property="isRecruiter"/>
+                    <field property="isCRMManager"/>
+                    <field property="isCRMAgent"/>
+                    <field property="isAccountingManager"/>
+                    <field property="isChoosingNotifications"/>
+                    <field property="isChoosingVisualEditor"/>
+                    <field property="isChoosingSyntaxHighlighting"/>
+                    <field property="adminColorScheme"/>
+                    <field property="isChoosingKeyboardStructs"/>
+                    <field property="isChoosingToolbar"/>
+                </column>
+            </fieldGroup>
+        </scrollBox>
+        <groupBox caption="Photo" spacing="true"
+                  height="300px" width="300px" expand="image">
+            <image id="image"
+                   width="100%"
+                   align="MIDDLE_CENTER"
+                   scaleMode="CONTAIN"/>
+            <hbox align="BOTTOM_LEFT"
+                  spacing="true">
+                <upload id="uploadField"/>
+                <button id="downloadImageBtn"
+                        caption="Download"
+                        invoke="onDownloadImageBtnClick"/>
+                <button id="clearImageBtn"
+                        caption="Clear"
+                        invoke="onClearImageBtnClick"/>
+            </hbox>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
